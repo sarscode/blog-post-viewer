@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 
 import Heading from './Heading';
 
-it('should heading with textContent without crashing', () => {
+it('should render heading with textContent without crashing', () => {
   const text = 'This is a heading';
   const { container } = render(<Heading>{text}</Heading>);
 
