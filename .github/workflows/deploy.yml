@@ -1,0 +1,29 @@
+name: Deploy to surge
+
+on:
+  push:
+    branches:
+      - component-stories # Set a branch to deploy
+
+jobs:
+  deploy-to-surge:
+    name: Deploy to surge
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+      # Build the project
+      - name: Build
+        run: npm run build-storybook
+
+      # Deploy to surge
+      - name: Intall deps
+        run: npm install --global surge
+      - name: Deploy
+        run: surge  ./storybook-static postviewer-component-stories.surge.sh --token ${{ secrets.SURGE_TOKEN }}
