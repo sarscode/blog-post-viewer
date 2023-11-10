@@ -1,15 +1,15 @@
 import { Container, PostItem } from 'components';
 
-import { PostItemProps } from 'components/@types';
+import { IPostList } from 'global';
 
 interface PostListProps {
-  posts: PostItemProps[];
+  posts: IPostList | null;
 }
 
 const PostList = ({ posts }: PostListProps) => {
   return (
     <Container className="max-w-lg">
-      {posts.map((post) => (
+      {posts?.map((post) => (
         <PostItem
           userId={post.userId}
           id={post.id}

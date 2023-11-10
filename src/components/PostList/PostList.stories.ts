@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Posts from './PostList';
 
 const meta: Meta<typeof Posts> = {
-  title: 'PostList',
+  title: 'Components/PostList',
   tags: ['autodocs'],
   component: Posts,
 };

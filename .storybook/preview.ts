@@ -1,6 +1,7 @@
 import '../src/index.css';
 
 import type { Preview } from '@storybook/react';
+import { withRouter } from 'storybook-addon-react-router-v6';
 
 const preview: Preview = {
   parameters: {
@@ -11,6 +12,7 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    decorators: [withRouter],
   },
 };
 

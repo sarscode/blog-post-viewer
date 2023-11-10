@@ -1,4 +1,5 @@
 import PostList from './PostList';
+import { getTestLayout } from 'utils/test.utils';
 import { render } from '@testing-library/react';
 
 const props = {
@@ -20,6 +21,7 @@ const props = {
 };
 
 it('should render PostList without crashing', () => {
-  const { container } = render(<PostList {...props} />);
+  const postList = getTestLayout(<PostList {...props} />, 'react-router');
+  const { container } = render(postList);
   expect(container).toBeInTheDocument();
 });

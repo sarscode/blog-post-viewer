@@ -1,11 +1,17 @@
-import { Logo, Text } from 'components';
+import { Container, Logo } from 'components';
+
+import { Link } from 'react-router-dom';
+import routes from 'routes';
 
 const Navbar = () => {
   return (
-    <div className="py-4 flex justify-between">
-      <Logo />
-      <Text>Source Code</Text>
-    </div>
+    <Container>
+      <div className="py-4 flex justify-between">
+        <Link to={routes.home}>
+          <Logo />
+        </Link>
+      </div>
+    </Container>
   );
 };
 
