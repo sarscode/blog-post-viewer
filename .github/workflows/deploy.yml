@@ -6,21 +6,24 @@ on:
       - component-stories # Set a branch to deploy
 
 jobs:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js 14.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: 14.x
-    # Install dependencies
-    - name: Install dependencies
-      run: npm install
-    # Build the project
-    - name: Build
-      run: npm run build-storybook
+  deploy-to-surge:
+    name: Deploy to surge
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+      # Build the project
+      - name: Build
+        run: npm run build-storybook
 
-    # Deploy to surge
-    - name: Deploy
-      run: npm install --global surge
-      run: surge  ./storybook-static postviewer-component-stories.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+      # Deploy to surge
+      - name: Intall deps
+        run: npm install --global surge
+      - name: Deploy
+        run: surge  ./storybook-static postviewer-component-stories.surge.sh --token ${{ secrets.SURGE_TOKEN }}
